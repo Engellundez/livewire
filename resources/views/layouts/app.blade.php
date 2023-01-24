@@ -45,10 +45,19 @@
     @stack('modals')
 
     @livewireScripts
+
+    @stack('js')
     <script>
         Livewire.on('alert', function(message) {
             Swal.fire(
-                'Good job!',
+                'Guardado',
+                message,
+                'success'
+            )
+        })
+        Livewire.on('edit', function(message) {
+            Swal.fire(
+                'Editado',
                 message,
                 'success'
             )

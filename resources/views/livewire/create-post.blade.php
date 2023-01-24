@@ -9,6 +9,14 @@
         </x-slot>
         <x-slot name="content">
 
+            <div wire:loading wire:target="image">
+                <b style="color: red;">¡Cargando Imagen!</b> <span style="color: red;">Espere un momento</span>
+            </div>
+
+            @if ($image)
+                <img src="{{ $image->temporaryUrl() }}" class="mb-4">
+            @endif
+
             <div class="mb-4">
                 <x-jet-label value="Título del post"></x-jet-label>
                 <x-jet-input type="text" class="form-control" wire:model.defer="title"></x-jet-input>
@@ -23,13 +31,19 @@
                 <x-jet-input-error for="content" />
             </div>
 
+            <div>
+                <input type="file" wire:model.defer="image" id="{{ $identificador }}">
+
+                <x-jet-input-error for="image" />
+            </div>
+
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$set('open', false)">
                 Cancelar
             </x-jet-secondary-button>
 
-            <x-jet-danger-button wire:click="save()" wire:loading.attr="disabled" wire:target="save" class="disabled:opacity-25">
+            <x-jet-danger-button wire:click="save()" wire:loading.attr="disabled" wire:target="save, image" class="disabled:opacity-25">
                 Crear Post
             </x-jet-danger-button>
         </x-slot>
