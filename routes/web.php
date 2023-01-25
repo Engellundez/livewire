@@ -24,6 +24,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 	Route::get('/dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
+
+	Route::get('/alpine', function () {
+		return view('alpine.alpine');
+	})->name('alpine');
+
+	Route::get('/alpine-livewire', function () {
+		return view('alpine.livewire');
+	})->name('alpine.livewire');
 });
 
 // EJEMPLOS

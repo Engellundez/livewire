@@ -18,7 +18,17 @@
 
     {{-- utiliza el valor de la propiedad y se sincroniza con livewire, pero espera hasta que livewire ejecute una funcion --}}
     <div x-data="{ count: @entangle('count').defer }">
-        <p>Count dentro de Alpine <span x-text="count"></span></p>
+        <p>Count dentro de Alpine con Defer <span x-text="count"></span></p>
+
+        <button class="btn btn-success" @click="count++">
+            Aumentar desde Alpine
+        </button>
+        <button class="btn btn-danger" @click="count--">
+            Disminuir desde Alpine
+        </button>
+    </div>
+    <div x-data="{ count: @entangle('count') }">
+        <p>Count dentro de Alpine sin Defer <span x-text="count"></span></p>
 
         <button class="btn btn-success" @click="count++">
             Aumentar desde Alpine
